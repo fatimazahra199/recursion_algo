@@ -1,0 +1,20 @@
+FUNCTION isPalindrom(word : STRING[n]) : BOOLEAN
+VAR
+    str : STRING 
+    n: INTEGER
+BEGIN
+  str := "";
+read(word)
+    if( n < 1 OR n = 1) {
+        return true
+    }
+    if (word[0] <> word[n-1]){
+        return false
+    }
+
+    FOR i FROM 1 TO n-1 STEP 1  DO
+        str := str + word[i]
+    END_FOR
+
+    RETURN isPalindrom(str);
+END
