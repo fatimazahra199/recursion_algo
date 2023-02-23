@@ -1,20 +1,20 @@
-FUNCTION isPalindrom(word : STRING[n]) : BOOLEAN
+FUNCTION isPalindrom(word : STRING) : BOOLEAN
 VAR
-    str : STRING 
-    n: INTEGER
+    n: INTEGER;
 BEGIN
-  str := "";
-read(word)
-    if( n < 1 OR n = 1) {
-        return true
-    }
-    if (word[0] <> word[n-1]){
-        return false
-    }
+    n := LENGTH(word);
+    IF (n < 2) THEN
+        RETURN true;
+    END_IF
 
-    FOR i FROM 1 TO n-1 STEP 1  DO
-        str := str + word[i]
+    word := LOWERCASE(word);
+    word := REPLACE(word, " ", "");
+
+    FOR i FROM 1 TO n DIV 2 DO
+        IF (word[i] <> word[n-i+1]) THEN
+            RETURN false;
+        END_IF
     END_FOR
 
-    RETURN isPalindrom(str);
+    RETURN true;
 END
